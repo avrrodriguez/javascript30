@@ -64,8 +64,10 @@
     element.style.border = "0.5rem solid #ffa500"
     audioName.play();
     setTimeout(() => {element.style.border = "0.4rem solid #000000"}, 100)
+    element.removeEventListener("click", () => playAudio(element));
   } 
 
+  // potential memory leaks from not removing event listeners
   document.querySelectorAll(".key").forEach(element => {
     element.addEventListener("click", () => playAudio(element));
   })
