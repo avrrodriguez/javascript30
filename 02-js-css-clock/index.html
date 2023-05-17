@@ -51,10 +51,30 @@
     .hand {
       position: fixed;
       top: 49%; left: 28%;
-      /* transform: rotate(0.4turn); */
-      height: 0.4rem;
-      width: 6.5rem;
       background-color: black;
+      transform-origin: right;
+    }
+
+    .hour-hand {
+      top: 49%; left: 30.5%;
+      transform: rotate(90deg);
+      background-color: red;
+      width: 5.8rem;
+      height: 0.5rem;
+    }
+
+    .min-hand {
+      top: 49%; left: 30%;
+      transform: rotate(180deg);
+      background-color: orange;
+      width: 5.8rem;
+      height: 0.4rem;
+    }
+
+    .second-hand {
+      transform: rotate(135deg);
+      width: 6.5rem;
+      height: 0.3rem;
     }
 
 
@@ -62,6 +82,28 @@
   </style>
 
   <script>
+    function setDate() {
+      var time = new Date();
+      var hours = time.getHours();
+      var minutes = time.getMinutes();
+      var seconds = time.getSeconds();
+
+      var hourDegree,minDegree, secDegree;
+      if (parseInt(hours) > 11) {
+        hours = hours - 12;
+      }
+
+      secDegree = 90 + (seconds * (360/60));
+      minDegree = ((minutes / 60) * 360) + ((seconds/60)*6) + 90;
+      hourDegree = ((hours / 12) * 360) + ((minutes/60)*30) + 90;
+
+      document.querySelector(".hour-hand").style.transform = `rotate(${hourDegree}deg)`;
+      document.querySelector(".min-hand").style.transform = `rotate(${minDegree}deg)`;
+      document.querySelector(".second-hand").style.transform = `rotate(${secDegree}deg)`; 
+    }
+    setInterval(setDate,1000);
+
+    setDate();
 
 
   </script>
