@@ -74,7 +74,6 @@
     function watchBlurChange(event) {
       console.log(event.target.value);
 
-      // console.log(getComputedStyle(imageDiv).getPropertyValue("--filter-blur"));
       imageDiv.style.setProperty("--filter-blur", `${event.target.value}px`)
     }
 
@@ -86,17 +85,9 @@
     var element = document.querySelector(".controls");
     var imageDiv = document.getElementById("image")
 
-    // console.log(element);
-    // console.log(getComputedStyle(element).getPropertyValue("--test-var"));
-    // element.style.setProperty("--test-var", "30px");
-    // console.log(getComputedStyle(element).getPropertyValue("--test-var"));
-
     var spacingElement = document.getElementById("spacing");
     var blurElement = document.getElementById("blur");
     var colorElement = document.getElementById("base");
-    console.log(colorElement.value);
-    console.log(blurElement.value);
-    console.log(spacingElement.value);
 
     spacingElement.addEventListener("change", watchSpacingChange);
     blurElement.addEventListener("change", watchBlurChange);
